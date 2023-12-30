@@ -20,7 +20,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="rpi_power_monitor",
-    version='0.3.0',
+    version='0.3.2.dev0',
     description="Raspberry Pi Power Monitor",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -35,6 +35,9 @@ setup(
         "requests==2.21.0",
         "tomli==2.0.1"
     ],
+    entry_points={
+        'console_scripts': ['power-monitor=rpi_power_monitor.power_monitor:main'],
+    },
     license="GNU General Public License (GPLv3)",
     packages=["rpi_power_monitor"],
     classifiers=[

@@ -99,7 +99,7 @@ class RPiPowerMonitor:
         self.def_cal = 0.88     # This is the default calibration factor for all CTs from my shop.
         self.terminal_mode = False
 
-    
+
     def validate_cqs(self):
         '''Ensures that the continuous queries exist in the configured Influx database, and creates them if not.'''
 
@@ -827,7 +827,7 @@ class RPiPowerMonitor:
                 poll_time = samples['time']
                 duration = samples['duration']
                 sample_rate = round((sample_count / duration) / num_samples, 2)
-                per_channel_sample_rate = round(sample_rate / (2 * len(rpm.enabled_channels)), 2)                
+                per_channel_sample_rate = round(sample_rate / (2 * len(self.enabled_channels)), 2)
                 # logger.debug(f"Sample rates. Overall: {sample_rate} | Per-channel: {per_channel_sample_rate}")
 
 
@@ -1188,8 +1188,8 @@ class Point:
 
         return data
 
-if __name__ == '__main__':
 
+def main():
     args = parser.parse_args()
     if args.verbose == True:
         ch.setLevel(logging.DEBUG)
@@ -1249,3 +1249,7 @@ if __name__ == '__main__':
                 "Plot created! I could not determine the IP address of this machine."
                 "Visit your device's IP address in a web browser to view the list of charts "
                 "you've created using '--plot' mode.")
+
+
+if __name__ == '__main__':
+    main()
